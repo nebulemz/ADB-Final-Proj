@@ -17,12 +17,13 @@ if (isset($_POST['addProduct'])) {
     move_uploaded_file($_FILES["prod_img"]["tmp_name"], "assets/img/products/" . $_FILES["prod_img"]["name"]);
     $prod_desc = $_POST['prod_desc'];
     $prod_price = $_POST['prod_price'];
+    $prod_count = $_POST['prod_count'];
 
     //Insert Captured information to a database table
-    $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_img, prod_desc, prod_price ) VALUES(?,?,?,?,?,?)";
+    $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_img, prod_desc, prod_price, prod_count ) VALUES(?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
-    $rc = $postStmt->bind_param('ssssss', $prod_id, $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price);
+    $rc = $postStmt->bind_param('sssssss', $prod_id, $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price,$prod_count);
     $postStmt->execute();
     //declare a varible which will be passed to alert function
     if ($postStmt) {
@@ -85,6 +86,10 @@ require_once('partials/_head.php');
                   <div class="col-md-6">
                     <label>Product Price</label>
                     <input type="text" name="prod_price" class="form-control" value="">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Item Count</label>
+                    <input type="text" name="prod_count" class="form-control" value="">
                   </div>
                 </div>
                 <hr>
