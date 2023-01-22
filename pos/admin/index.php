@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
 require_once('partials/_head.php');
 ?>
 
-<body  class="bg-dark">
+<body class="bg-dark">
   <div class="main-content">
     <div class="header bg-gradient-primar py-7">
       <div class="container">
