@@ -1,25 +1,24 @@
 <?php
 session_start();
-include('pos/admin/config/config.php');
-//admin 
+include('pos/cashier/config/config.php');
+//login 
 if (isset($_POST['login'])) {
-  $admin_email = $_POST['admin_email'];
-  $admin_password = sha1(md5($_POST['admin_password'])); //double encrypt to increase security
-  $stmt = $mysqli->prepare("SELECT admin_email, admin_password, admin_id  FROM   rpos_admin WHERE (admin_email =? AND admin_password =?)"); //sql to log in user
-  $stmt->bind_param('ss',  $admin_email, $admin_password); //bind fetched parameters
+  $staff_email = $_POST['staff_email'];
+  $staff_password = sha1(md5($_POST['staff_password'])); //double encrypt to increase security
+  $stmt = $mysqli->prepare("SELECT staff_email, staff_password, staff_id  FROM   rpos_staff WHERE (staff_email =? AND staff_password =?)"); //sql to log in user
+  $stmt->bind_param('ss',  $staff_email, $staff_password); //bind fetched parameters
   $stmt->execute(); //execute bind 
-  $stmt->bind_result($admin_email, $admin_password, $admin_id); //bind result
+  $stmt->bind_result($staff_email, $staff_password, $staff_id); //bind result
   $rs = $stmt->fetch();
-  $_SESSION['admin_id'] = $admin_id;
+  $_SESSION['staff_id'] = $staff_id;
   if ($rs) {
     //if its sucessfull
-	
-    header("location:pos/admin/dashboard.php");
+    header("location:pos/cashier/dashboard.php");
   } else {
     $err = "Incorrect Authentication Credentials ";
   }
-} 
-require_once('pos/admin/partials/_head.php');
+}
+require_once('pos/cashier/partials/_head.php');
 ?>
 
 <style>
@@ -30,9 +29,10 @@ font-family: sans-serif;
 } 
 
 .hero{
-height: 90%;
+height: 100%;
 width: 100%;
-background-color: linear-gradient(rgba (0,0, 0,0.4) , rgba(0,0,0,0.4));
+background-color: linear-gradient(rgba(0,0, 0,0.4) , rgba(0,0,0,0.4));
+                  
 background-position: center;
 background-size: cover;
 position: absolute;
@@ -63,7 +63,7 @@ box-shadow: 0 0 20px 9px #8532121f;
 border-radius : 30px;
 }
 
-.toggle-btn{
+.toggle-btnn{
 padding: 10px 25px;
 cursor: pointer;
 background : linear-gradient(to right, #695cfe, #00d4ff);
@@ -76,7 +76,7 @@ outline: none;
 position: relative;
 }
 
-.toggle-btnn{
+.toggle-btn{
 padding: 10px 25px;
 cursor: pointer;
 background : transparent;
@@ -133,21 +133,20 @@ left: 30px;
 
     <!-- Page content -->
     <div class="hero">
-    <div class="bg-image"></div>
       <div class="form_pos">
       <span class="logo"><img src= "pos/admin/assets/img/brand/plm_merch_logo.png" alt="" 
             style="float:left;width:522px;height:242px;margin-right:200px">
       </span>
       <div class="form-box">
         <div class="button-box">
-            <button type="button" class="toggle-btn">Admin</button>
-            <button type="button" class="toggle-btnn" onclick="document.location.href='second_index.php';">Staff</button>
+            <button type="button" class="toggle-btn" onclick="document.location.href='index.php';">Admin</button>
+            <button type="button" class="toggle-btnn">Staff</button>
           </div>  
               <form method="post" id= "admin" class="input-groupp" role="form">
                 
-                    <input class="form-control" id= "input-field" required name="admin_email" placeholder="Email" type="email">
+                    <input class="form-control" id= "input-field" required name="staff_email" placeholder="Email" type="email">
                  
-                    <input class="form-control" id= "input-field" required name="admin_password" placeholder="Password" type="password">
+                    <input class="form-control" id= "input-field" required name="staff_password" placeholder="Password" type="password">
                   
                 <div class="text-center">
                   <button type="submit" name="login" class="submit-btn">Log In</button>
@@ -168,7 +167,7 @@ left: 30px;
   
   <!-- Argon Scripts -->
   <?php
-  require_once('pos/admin/partials/_scripts.php');
+  require_once('pos/cashier/partials/_scripts.php');
   ?>
 </body>
 
