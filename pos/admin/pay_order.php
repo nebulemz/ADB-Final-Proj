@@ -25,17 +25,19 @@ if (isset($_POST['pay'])) {
 
     //Insert Captured information to a database table
     $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
-    $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";  
+    $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
+ 
 
 
     $postStmt = $mysqli->prepare($postQuery);
     $upStmt = $mysqli->prepare($upQry);
+    $upStmt = $Mysqli->prepare($upQry1);
 
     //bind paramaters
 
     $rc = $postStmt->bind_param('ssssss', $pay_id, $pay_code, $order_code, $customer_id, $pay_amt, $pay_method);
     $rc = $upStmt->bind_param('ss', $order_status, $order_code);
-
+  
 
     $postStmt->execute();
     $upStmt->execute();
