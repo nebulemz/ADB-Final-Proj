@@ -481,7 +481,6 @@ body.dark .home .text {
   const body = document.querySelector('body'),
     sidebar = body.querySelector('nav'),
     toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text"),
     logo = document.querySelector('.img');
@@ -496,14 +495,6 @@ body.dark .home .text {
       logo.classList.remove('img-navbar-close');
     }
   });
-
-  console.log(sidebar.classList.contains('sb-close'));
-
-
-
-  searchBtn.addEventListener("click", () => {
-    sidebar.classList.remove("sb-close");
-  })
   </script>
 
 </body>
