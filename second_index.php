@@ -22,152 +22,223 @@ require_once('pos/cashier/partials/_head.php');
 ?>
 
 <style>
-*{
-margin: 0;
-padding: 0;
-font-family: sans-serif;
-} 
-
-.hero{
-height: 100%;
-width: 100%;
-background-color: linear-gradient(rgba(0,0, 0,0.4) , rgba(0,0,0,0.4));
-                  
-background-position: center;
-background-size: cover;
-position: absolute;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.form_pos{
-    margin-top: 150px;
-    margin-left: 100px;
+body {
+  background-image: url('./pos/admin/assets/img/brand/plm_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+  color: white;
 }
 
-.form-box{
-width: 380px;
-height: 380px;
-position: relative;
-margin: 6% auto;
-background : #fff;
-border-radius: 10px;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-padding: 5px;
-overflow: hidden;
+.blur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(31, 37, 69, .6);
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
 }
 
-.button-box{
-width: 225px;
-margin: 35px auto;
-position: relative;
-box-shadow: 0 0 20px 9px #8532121f;
-border-radius : 30px;
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
 }
 
-.toggle-btnn{
-padding: 10px 25px;
-cursor: pointer;
-background : linear-gradient(to right, #695cfe, #00d4ff);
-border : 0;
-border-radius: 30px;
-width: 110px;
-height: 45px;
-font-size: 14px;
-outline: none;
-position: relative;
+.container {
+  width: 96%;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 100vh;
 }
 
-.toggle-btn{
-padding: 10px 25px;
-cursor: pointer;
-background : transparent;
-border : 0;
-border-radius: 30px;
-width: 110px;
-height: 45px;
-font-size: 14px;
-outline: none;
-position: relative;
+.header {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.input-groupp{
-top: 120px;
-position: absolute;
-width: 180px;
-transition: .5s;
+.logo-container {
+  width: 8rem;
 }
 
-#input-field{
-    margin-top: 20px;
-	height: 45px;
-	width: 300px;
-	font-size: 14px;
-	background-color: #fff;
-	padding-left: 20px;
-    border-style: groove;
-    border-radius: 5px;
-    border-color: rgba(0, 0, 0, 0.35);
+.logo {
+  width: 100%;
 }
 
-.submit-btn{
-width: 320px;
-height: 45px;
-padding: 10px 30px;
-cursor: pointer;
-display: block;
-margin-top: 40px;
-margin-left: 3px;
-font-size: 18px;
-background: linear-gradient(to right, #695cfe, #00d4ff);
-border : 0;
-outline: none;
-border-radius: 5px;
+.form-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
-#admin{
-left: 30px;
+.form-inner-container {
+  width: 26rem;
+  max-width: 70%;
+  background: rgba(209, 215, 248, .5);
+  backdrop-filter: blur(15px);
+  padding: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.btn-container {
+  width: 225px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
+  background: #D9D9D9;
+}
+
+.toggle-button,
+.submit-btn {
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 30px;
+  outline: none;
+  position: relative;
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+
+.btn__staff,
+.submit-btn {
+  background: linear-gradient(to right, #4855A1, #95A2EE);
+  color: #fff;
+  width: 50%;
+
+}
+
+.btn__admin {
+  background: transparent;
+  color: #343D73;
+  width: 50%;
+
+}
+
+.input-groupp {
+  width: 100%;
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: .6rem 1rem;
+  background: #D1D7F8;
+  border-radius: 8px;
+  color: #29315C;
+  font-size: .8rem;
+  border: none;
+  outline: none;
+}
+
+.input~.input {
+  margin-top: 1rem;
+}
+
+.submit-btn-container {
+  display: grid;
+  padding-left: center;
+  width: 70%;
+  margin-top: 1.8rem;
+}
+
+.submit-btn {
+  width: 100%;
+}
 </style>
 
 <body>
+  <!-- Page content -->
 
-    <!-- Page content -->
-    <div class="hero">
-      <div class="form_pos">
-      <span class="logo"><img src= "pos/admin/assets/img/brand/plm_merch_logo.png" alt="" 
-            style="float:left;width:522px;height:242px;margin-right:200px">
-      </span>
-      <div class="form-box">
-        <div class="button-box">
-            <button type="button" class="toggle-btn" onclick="document.location.href='index.php';">Admin</button>
-            <button type="button" class="toggle-btnn">Staff</button>
-          </div>  
-              <form method="post" id= "admin" class="input-groupp" role="form">
-                
-                    <input class="form-control" id= "input-field" required name="staff_email" placeholder="Email" type="email">
-                 
-                    <input class="form-control" id= "input-field" required name="staff_password" placeholder="Password" type="password">
-                  
-                <div class="text-center">
-                  <button type="submit" name="login" class="submit-btn">Log In</button>
-                </div>
-              </form>
+  <div class="blur"></div>
+  <div class="hero container">
 
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <!-- <a href="forgot_pwd.php" class="text-light"><small>Forgot password?</small></a> -->
-            </div>
-    
-        </div>  
-       </div>
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo-container">
+        <img class="logo" src="./pos/admin/assets/img/brand/plm-merch-logo-light2.png" alt="plm merch logo">
+      </div>
+      <div class="day">
+        <span>Today is </span>
+        <span class="currentDay"></span>
       </div>
     </div>
-  
+
+    <!--FORM -->
+    <div class="form-container">
+
+      <!--BUTTON TOP-->
+      <div class="form-inner-container">
+        <div class="btn-container">
+          <button type="button" class="toggle-button btn__admin"
+            onclick="document.location.href='index.php'">Admin</button>
+          <button type="button" class="toggle-btnn toggle-button btn__staff">Staff</button>
+        </div>
+
+        <form method="post" id="admin" class="input-groupp" role="form">
+          <input type="email" id="input-field" class="input input__email" required name="staff_email"
+            placeholder="Email">
+          <input type="password" id="input-field" class="input input__password" required name="staff_password"
+            placeholder="Password">
+
+          <div class="submit-btn-container">
+            <button type="submit" name="login" class="submit-btn">Log In</button>
+          </div>
+        </form>
+
+        <div class="row mt-3">
+          <!-- <a href="forgot_pwd.php" class="text-light"><small>Forgot password?</small></a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
   <!-- Argon Scripts -->
+
+  <script>
+  const currentDateEl = document.querySelector('.currentDay');
+  const today = new Date();
+  const locale = navigator.language;
+  const options = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }
+  currentDateEl.textContent = new Intl.DateTimeFormat(locale, options).format(today);
+  </script>
   <?php
-  require_once('pos/cashier/partials/_scripts.php');
+  require_once('pos/admin/partials/_scripts.php');
   ?>
 </body>
 
