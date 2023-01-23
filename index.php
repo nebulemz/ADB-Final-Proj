@@ -75,6 +75,10 @@ body {
   align-items: center;
 }
 
+.day span {
+  font-size: .8rem;
+}
+
 .logo-container {
   width: 8rem;
 }

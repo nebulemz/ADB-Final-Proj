@@ -75,12 +75,20 @@ body {
   align-items: center;
 }
 
+.day span {
+  font-size: .8rem;
+}
+
 .logo-container {
   width: 8rem;
 }
 
 .logo {
   width: 100%;
+}
+
+.login-title {
+  color: #fff;
 }
 
 .form-container {
@@ -199,6 +207,8 @@ body {
 
       <!--BUTTON TOP-->
       <div class="form-inner-container">
+
+        <h2 class="login-title">Administrator Login</h2>
 
         <form method="post" id="admin" class="input-groupp" role="form">
           <input type="email" id="input-field" class="input input__email" required name="admin_email"
