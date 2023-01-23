@@ -26,12 +26,9 @@ if (isset($_POST['pay'])) {
     //Insert Captured information to a database table
     $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
     $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
- 
-
 
     $postStmt = $mysqli->prepare($postQuery);
     $upStmt = $mysqli->prepare($upQry);
-    $upStmt = $Mysqli->prepare($upQry1);
 
     //bind paramaters
 
@@ -74,10 +71,11 @@ require_once('partials/_head.php');
         $total = ($order->prod_price * $order->prod_qty);
 
     ?>
-    
+
     <!-- Header -->
-    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
-    <span class="mask bg-gradient-dark opacity-8"></span>
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;"
+      class="header  pb-8 pt-5 pt-md-8">
+      <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -93,7 +91,7 @@ require_once('partials/_head.php');
               <h3>Please Fill All Fields</h3>
             </div>
             <div class="card-body">
-              <form method="POST"  enctype="multipart/form-data">
+              <form method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="col-md-6">
                     <label>Payment ID</label>
@@ -113,9 +111,9 @@ require_once('partials/_head.php');
                   <div class="col-md-6">
                     <label>Payment Method</label>
                     <select class="form-control" name="pay_method">
-                        <option selected>Cash</option>
-                        <option>Gcash</option>
-                        <option>Bank Transfer</option>
+                      <option selected>Cash</option>
+                      <option>Gcash</option>
+                      <option>Bank Transfer</option>
                     </select>
                   </div>
                 </div>
