@@ -10,9 +10,7 @@ check_login();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="MartDevelopers Inc">
-    <title>Restaurant Point Of Sale </title>
+    <title>PLM Merchandise</title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
@@ -49,13 +47,13 @@ while ($order = $res->fetch_object()) {
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
-                                <strong>CodeAstro Lounge</strong>
+                                <strong>PLM Merch</strong>
                                 <br>
-                                127-0-0-1
+                                General Luna, corner Muralla St, Intramuros, 
                                 <br>
-                                4151 Willow Oaks Lane, Sugartown
+                                Intramuros, Manila, 1002 Metro Manila
                                 <br>
-                                (+000) 337-337-3069
+                                (+63 9876543210)
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">

@@ -10,31 +10,39 @@ check_login();
 if (isset($_POST['pay'])) {
   //Prevent Posting Blank Values
 
+
   if (empty($_POST["pay_code"]) || empty($_POST["pay_amt"]) || empty($_POST['pay_method'])) {
     $err = "Blank Values Not Accepted";
   } else {
 
     $pay_code = $_POST['pay_code'];
-
     $customer_id = $_GET['customer_id'];
     $pay_amt  = $_POST['pay_amt'];
     $pay_method = $_POST['pay_method'];
     $pay_id = $_POST['pay_id'];
     $order_status = $_GET['order_status'];  
     $order_code = $_GET['order_code'];
+ 
+   // JOIN ORDER AND PRODUCTS
+
+   "UPDATE p.prod_id, p.prod_count, o.order_code, o.prod_qty FROM rpos_products
+   AS p JOIN rpos_orders AS o ON o.order_code=p.order_code SET p.prod_count-o.prod_qty WHERE = o.order_code =?";
+
+    
 
     //Insert Captured information to a database table
     $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
     $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
+  
 
     $postStmt = $mysqli->prepare($postQuery);
     $upStmt = $mysqli->prepare($upQry);
+ 
 
     //bind paramaters
 
     $rc = $postStmt->bind_param('ssssss', $pay_id, $pay_code, $order_code, $customer_id, $pay_amt, $pay_method);
     $rc = $upStmt->bind_param('ss', $order_status, $order_code);
-  
 
     $postStmt->execute();
     $upStmt->execute();
@@ -72,6 +80,10 @@ require_once('partials/_head.php');
 
     ?>
 
+    <?php
+  
+  
+    ?>
     <!-- Header -->
     <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;"
       class="header  pb-8 pt-5 pt-md-8">
@@ -105,7 +117,7 @@ require_once('partials/_head.php');
                 <hr>
                 <div class="form-row">
                   <div class="col-md-6">
-                    <label>Amount ($)</label>
+                    <label>Amount (₱)</label>
                     <input type="text" name="pay_amt" readonly value="<?php echo $total;?>" class="form-control">
                   </div>
                   <div class="col-md-6">
