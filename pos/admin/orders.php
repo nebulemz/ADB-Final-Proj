@@ -47,6 +47,8 @@ require_once('partials/_head.php');
                     <th scope="col"><b>Action</b></th>
                   </tr>
                 </thead>
+
+    
                 <tbody>
                   <?php
                   $ret = "SELECT * FROM  rpos_products ";

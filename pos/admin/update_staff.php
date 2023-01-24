@@ -8,7 +8,8 @@ check_login();
 //Udpate Staff
 if (isset($_POST['UpdateStaff'])) {
   //Prevent Posting Blank Values
-  if (empty($_POST["staff_number"]) || empty($_POST["staff_name"]) || empty($_POST['staff_email']) || empty($_POST['staff_password'])) {
+  if (empty($_POST["staff_number"]) || empty($_POST["staff_name"]) || empty($_POST['staff_email']) ||
+   empty($_POST['staff_password'])) {
     $err = "Blank Values Not Accepted";
   } else {
     $staff_number = $_POST['staff_number'];
@@ -18,7 +19,8 @@ if (isset($_POST['UpdateStaff'])) {
     $update = $_GET['update'];
 
     //Insert Captured information to a database table
-    $postQuery = "UPDATE rpos_staff SET  staff_number =?, staff_name =?, staff_email =?, staff_password =? WHERE staff_id =?";
+    $postQuery = "UPDATE rpos_staff SET  staff_number =?, staff_name =?, staff_email =?, staff_password =? WHERE 
+    staff_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssi', $staff_number, $staff_name, $staff_email, $staff_password, $update);
