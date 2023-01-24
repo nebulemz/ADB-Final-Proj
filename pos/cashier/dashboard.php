@@ -20,7 +20,8 @@ require_once('partials/_analytics.php');
     require_once('partials/_topnav.php');
     ?>
     <!-- Header -->
-    <div style="background-image: url(../admin/assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
+    <div style="background-image: url(../admin/assets/img/theme/restro00.jpg); background-size: cover;"
+      class="header  pb-8 pt-5 pt-md-8">
       <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
@@ -43,7 +44,7 @@ require_once('partials/_analytics.php');
                 </div>
               </div>
             </div>
-			
+
             <div class="col-xl-3 col-lg-6">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
@@ -54,7 +55,7 @@ require_once('partials/_analytics.php');
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
-                        <i class="fas fa-utensils"></i>
+                        <img src="./assets/img/icons/icon-products.png" alt="" class="icon-products">
                       </div>
                     </div>
                   </div>
@@ -139,20 +140,20 @@ require_once('partials/_analytics.php');
                     $total = ($order->prod_price * $order->prod_qty);
 
                   ?>
-                    <tr>
-                      <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
-                      <td><?php echo $order->customer_name; ?></td>
-                      <td class="text-success"><?php echo $order->prod_name; ?></td>
-                      <td>$<?php echo $order->prod_price; ?></td>
-                      <td class="text-success"><?php echo $order->prod_qty; ?></td>
-                      <td>$<?php echo $total; ?></td>
-                      <td><?php if ($order->order_status == '') {
+                  <tr>
+                    <th class="text-success" scope="row"><?php echo $order->order_code; ?></th>
+                    <td><?php echo $order->customer_name; ?></td>
+                    <td class="text-success"><?php echo $order->prod_name; ?></td>
+                    <td>$<?php echo $order->prod_price; ?></td>
+                    <td class="text-success"><?php echo $order->prod_qty; ?></td>
+                    <td>$<?php echo $total; ?></td>
+                    <td><?php if ($order->order_status == '') {
                             echo "<span class='badge badge-danger'>Not Paid</span>";
                           } else {
                             echo "<span class='badge badge-success'>$order->order_status</span>";
                           } ?></td>
-                      <td class="text-success"><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
-                    </tr>
+                    <td class="text-success"><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
+                  </tr>
                   <?php } ?>
                 </tbody>
               </table>
@@ -160,7 +161,7 @@ require_once('partials/_analytics.php');
           </div>
         </div>
       </div>
-	
+
       <div class="row mt-5">
         <div class="col-xl-12">
           <div class="card shadow">
@@ -192,17 +193,17 @@ require_once('partials/_analytics.php');
                   $res = $stmt->get_result();
                   while ($payment = $res->fetch_object()) {
                   ?>
-                    <tr>
-                      <th class="text-success" scope="row">
-                        <?php echo $payment->pay_code; ?>
-                      </th>
-                      <td>
-                        $<?php echo $payment->pay_amt; ?>
-                      </td>
-                      <td class='text-success'>
-                        <?php echo $payment->order_code; ?>
-                      </td>
-                    </tr>
+                  <tr>
+                    <th class="text-success" scope="row">
+                      <?php echo $payment->pay_code; ?>
+                    </th>
+                    <td>
+                      $<?php echo $payment->pay_amt; ?>
+                    </td>
+                    <td class='text-success'>
+                      <?php echo $payment->order_code; ?>
+                    </td>
+                  </tr>
                   <?php } ?>
                 </tbody>
               </table>

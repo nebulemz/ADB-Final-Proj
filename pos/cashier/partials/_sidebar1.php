@@ -72,7 +72,7 @@ body.dark {
   z-index: 100;
 }
 
-.sidebar.sb-close {
+.sidebar.close {
   width: 88px;
 }
 
@@ -114,12 +114,12 @@ body.dark {
   opacity: 1;
 }
 
-.sidebar.sb-close .text {
+.sidebar.close .text {
   opacity: 0;
 }
 
-.sidebar.sb-close .image img {
-  z-index: 10;
+.sidebar.close .image img {
+  opacity: 0;
 }
 
 /* =========================== */
@@ -130,9 +130,9 @@ body.dark {
 
 .sidebar header .image-text {
   margin-top: 20px;
+  margin-left: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .sidebar header .logo-text {
@@ -159,13 +159,9 @@ header .image-text .profession {
 }
 
 .sidebar header .image img {
-  height: 100%;
+  height: 45px;
   width: 150px;
-}
-
-.sidebar header .image .img-navbar-close {
-  height: 100%;
-  width: 100%;
+  border-radius: 6px;
 }
 
 .sidebar header .toggle {
@@ -190,7 +186,7 @@ body.dark .sidebar header .toggle {
   color: var(--text-color);
 }
 
-.sidebar.sb-close .toggle {
+.sidebar.close .toggle {
   transform: translateY(-50%) rotate(0deg);
 }
 
@@ -199,7 +195,7 @@ body.dark .sidebar header .toggle {
   transition: var(--tran-05);
 }
 
-.sidebar.sb-close~.main-content {
+.sidebar.close~.main-content {
   margin-left: 90px;
 }
 
@@ -259,7 +255,7 @@ body.dark .sidebar li a:hover .text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -338,18 +334,10 @@ body.dark .switch::before {
   padding: 12px 60px;
 }
 
-.sidebar.sb-close~.home {
+.sidebar.close~.home {
   left: 78px;
   height: 100vh;
   width: calc(100% - 78px);
-}
-
-.img {
-  content: url("../admin/assets/img/brand/plm_merch_logo.png");
-}
-
-.img-navbar-close {
-  content: url("../admin/assets/img/brand/plm-merch-logo-close.png");
 }
 
 body.dark .home .text {
@@ -373,11 +361,11 @@ body.dark .home .text {
 
 
 <body>
-  <nav class="sidebar">
+  <nav class="sidebar close">
     <header>
       <div class="image-text">
         <span class="image">
-          <img class="img">
+          <img src="../admin/assets/img/brand/bosunlogo.png" alt="">
         </span>
 
         <div class="text logo-text">
@@ -474,20 +462,17 @@ body.dark .home .text {
   const body = document.querySelector('body'),
     sidebar = body.querySelector('nav'),
     toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text"),
-    logo = document.querySelector('.img');
+    modeText = body.querySelector(".mode-text");
 
   toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("sb-close");
-    if (logo.classList.contains('img')) {
-      logo.classList.remove('img');
-      logo.classList.add('img-navbar-close');
-    } else {
-      logo.classList.add('img');
-      logo.classList.remove('img-navbar-close');
-    }
-  });
+    sidebar.classList.toggle("close");
+  })
+
+  searchBtn.addEventListener("click", () => {
+    sidebar.classList.remove("close");
+  })
   </script>
 
 </body>
