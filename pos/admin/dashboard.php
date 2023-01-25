@@ -90,7 +90,7 @@ require_once('partials/_analytics.php');
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-green text-white rounded-circle shadow">
-                        <i class="fas fa-dollar-sign"></i>
+                        <img src="./assets/img/icons/icon-peso.png" alt="peso sign">
                       </div>
                     </div>
                   </div>

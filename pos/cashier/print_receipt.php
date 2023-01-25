@@ -14,9 +14,9 @@ check_login();
   <meta name="author" content="MartDevelopers Inc">
   <title>PLM Merch </title>
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../admin/assets/img/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../admin/assets/img/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../admin/assets/img/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/icons/plm-merch-logo-18x18.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/icons/plm-merch-logo-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/icons/plm-18x18.png">
   <link rel="manifest" href="../admin/assets/img/icons/site.webmanifest">
   <link rel="mask-icon" href="../admin/assets/img/icons/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
@@ -25,6 +25,12 @@ check_login();
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/jquery.js"></script>
   <style>
+  html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
   body {
     background-image: url('./assets/img/brand/plm_bg.jpg');
     background-repeat: no-repeat;
@@ -56,7 +62,6 @@ check_login();
   }
   </style>
 </head>
-</style>
 <?php
 $order_code = $_GET['order_code'];
 $ret = "SELECT * FROM  rpos_orders WHERE order_code = '$order_code'";
@@ -76,13 +81,13 @@ while ($order = $res->fetch_object()) {
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-6">
             <address>
-              <strong>CodeAstro Lounge</strong>
+              <strong>PLM Merch</strong>
               <br>
-              127-0-0-1
+              General Luna, corner Muralla St, Intramuros,
               <br>
-              4151 Willow Oaks Lane, Sugartown
+              Intramuros, Manila, 1002 Metro Manila
               <br>
-              (+000) 337-337-3069
+              (+63 9876543210)
             </address>
           </div>
           <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -113,8 +118,8 @@ while ($order = $res->fetch_object()) {
                 <td class="col-md-9"><em> <?php echo $order->prod_name; ?> </em></h4>
                 </td>
                 <td class="col-md-1" style="text-align: center"> <?php echo $order->prod_qty; ?></td>
-                <td class="col-md-1 text-center">$<?php echo $order->prod_price; ?></td>
-                <td class="col-md-1 text-center">$<?php echo $total; ?></td>
+                <td class="col-md-1 text-center">₱<?php echo $order->prod_price; ?></td>
+                <td class="col-md-1 text-center">₱<?php echo $total; ?></td>
               </tr>
               <tr>
                 <td>   </td>
@@ -129,7 +134,7 @@ while ($order = $res->fetch_object()) {
                 </td>
                 <td class="text-center">
                   <p>
-                    <strong>$<?php echo $total; ?></strong>
+                    <strong>₱<?php echo $total; ?></strong>
                   </p>
                   <p>
                     <strong>14%</strong>
@@ -143,7 +148,7 @@ while ($order = $res->fetch_object()) {
                   <h4><strong>Total: </strong></h4>
                 </td>
                 <td class="text-center text-danger">
-                  <h4><strong>$<?php echo $total; ?></strong></h4>
+                  <h4><strong>₱<?php echo $total; ?></strong></h4>
                 </td>
               </tr>
             </tbody>
