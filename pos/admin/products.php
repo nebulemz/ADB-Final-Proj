@@ -33,8 +33,9 @@ require_once('partials/_head.php');
     require_once('partials/_topnav.php');
     ?>
     <!-- Header -->
-    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
-    <span class="mask bg-gradient-dark opacity-8"></span>
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;"
+      class="header  pb-8 pt-5 pt-md-8">
+      <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -59,7 +60,7 @@ require_once('partials/_head.php');
                     <th scope="col">Image</th>
                     <th scope="col">Product Code</th>
                     <th scope="col">Name</th>
-      
+
                     <th scope="col">Price</th>
                     <th scope="col">Item Count</th>
                     <th scope="col">Actions</th>
@@ -73,9 +74,9 @@ require_once('partials/_head.php');
                   $res = $stmt->get_result();
                   while ($prod = $res->fetch_object()) {
                   ?>
-                    <tr>
-                      <td>
-                        <?php
+                  <tr>
+                    <td>
+                      <?php
                         if ($prod->prod_img) {
                           echo "<img src='assets/img/products/$prod->prod_img' height='60' width='60 class='img-thumbnail'>";
                         } else {
@@ -83,28 +84,28 @@ require_once('partials/_head.php');
                         }
 
                         ?>
-                      </td>
-                      <td><?php echo $prod->prod_code; ?></td>
-                      <td><?php echo $prod->prod_name; ?></td>
-                        
-                      <td> <?php echo $prod->prod_price; ?></td>
-                      <td><?php echo $prod->prod_count;?></td>  
-                      <td>
-                        <a href="products.php?delete=<?php echo $prod->prod_id; ?>">
-                          <button class="btn btn-sm btn-danger">
-                            <i class="fas fa-trash"></i>
-                            Delete
-                          </button>
-                        </a>
+                    </td>
+                    <td><?php echo $prod->prod_code; ?></td>
+                    <td><?php echo $prod->prod_name; ?></td>
 
-                        <a href="update_product.php?update=<?php echo $prod->prod_id; ?>">
-                          <button class="btn btn-sm btn-primary">
-                            <i class="fas fa-edit"></i>
-                            Update
-                          </button>
-                        </a>
-                      </td>
-                    </tr>
+                    <td>₱ <?php echo $prod->prod_price; ?></td>
+                    <td><?php echo $prod->prod_count;?></td>
+                    <td>
+                      <a href="products.php?delete=<?php echo $prod->prod_id; ?>">
+                        <button class="btn btn-sm btn-danger">
+                          <i class="fas fa-trash"></i>
+                          Delete
+                        </button>
+                      </a>
+
+                      <a href="update_product.php?update=<?php echo $prod->prod_id; ?>">
+                        <button class="btn btn-sm btn-primary">
+                          <i class="fas fa-edit"></i>
+                          Update
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
                   <?php } ?>
                 </tbody>
               </table>

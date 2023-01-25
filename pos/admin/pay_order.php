@@ -22,14 +22,21 @@ if (isset($_POST['pay'])) {
     $pay_id = $_POST['pay_id'];
     $order_status = $_GET['order_status'];  
     $order_code = $_GET['order_code'];
+ 
+   // JOIN ORDER AND PRODUCTS
+
+   "UPDATE p.prod_id, p.prod_count, o.order_code, o.prod_qty FROM rpos_products
+   AS p JOIN rpos_orders AS o ON o.order_code=p.order_code SET p.prod_count-o.prod_qty WHERE = o.order_code =?";
+
     
 
     //Insert Captured information to a database table
+    $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
+    $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
   
 
     $postStmt = $mysqli->prepare($postQuery);
     $upStmt = $mysqli->prepare($upQry);
-
  
 
     //bind paramaters
@@ -37,9 +44,9 @@ if (isset($_POST['pay'])) {
     $rc = $postStmt->bind_param('ssssss', $pay_id, $pay_code, $order_code, $customer_id, $pay_amt, $pay_method);
     $rc = $upStmt->bind_param('ss', $order_status, $order_code);
 
-
     $postStmt->execute();
     $upStmt->execute();
+
 
     //declare a varible which will be passed to alert function
     if ($upStmt && $postStmt) {
