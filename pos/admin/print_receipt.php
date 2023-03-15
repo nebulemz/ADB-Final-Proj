@@ -10,11 +10,11 @@ check_login();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>PLM Merch</title>
+  <title>PLM Merchandise</title>
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/icons/plm-merch-logo-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/icons/plm-18x18.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png">
   <link rel="manifest" href="assets/img/icons/site.webmanifest">
   <link rel="mask-icon" href="assets/img/icons/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
@@ -117,8 +117,8 @@ while ($order = $res->fetch_object()) {
                 <td class="col-md-9"><em> <?php echo $order->prod_name; ?> </em></h4>
                 </td>
                 <td class="col-md-1" style="text-align: center"> <?php echo $order->prod_qty; ?></td>
-                <td class="col-md-1 text-center">₱<?php echo $order->prod_price; ?></td>
-                <td class="col-md-1 text-center">₱<?php echo $total; ?></td>
+                <td class="col-md-1 text-center">$<?php echo $order->prod_price; ?></td>
+                <td class="col-md-1 text-center">$<?php echo $total; ?></td>
               </tr>
               <tr>
                 <td>   </td>
@@ -133,7 +133,7 @@ while ($order = $res->fetch_object()) {
                 </td>
                 <td class="text-center">
                   <p>
-                    <strong>₱<?php echo $total; ?></strong>
+                    <strong>$<?php echo $total; ?></strong>
                   </p>
                   <p>
                     <strong>14%</strong>
@@ -147,7 +147,7 @@ while ($order = $res->fetch_object()) {
                   <h4><strong>Total: </strong></h4>
                 </td>
                 <td class="text-center text-danger">
-                  <h4><strong>₱<?php echo $total; ?></strong></h4>
+                  <h4><strong>$<?php echo $total; ?></strong></h4>
                 </td>
               </tr>
             </tbody>

@@ -49,9 +49,8 @@ require_once('partials/_head.php');
     require_once('partials/_topnav.php');
     ?>
     <!-- Header -->
-    <div style="background-image: url(../admin/assets/img/theme/restro00.jpg); background-size: cover;"
-      class="header  pb-8 pt-5 pt-md-8">
-      <span class="mask bg-gradient-dark opacity-8"></span>
+    <div style="background-image: url(../admin/assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
+    <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -82,7 +81,7 @@ require_once('partials/_head.php');
                       $res = $stmt->get_result();
                       while ($cust = $res->fetch_object()) {
                       ?>
-                      <option><?php echo $cust->customer_name; ?></option>
+                        <option><?php echo $cust->customer_name; ?></option>
                       <?php } ?>
                     </select>
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>" class="form-control">
@@ -95,8 +94,7 @@ require_once('partials/_head.php');
 
                   <div class="col-md-4">
                     <label>Order Code</label>
-                    <input type="text" name="order_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>"
-                      class="form-control" value="">
+                    <input type="text" name="order_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>" class="form-control" value="">
                   </div>
                 </div>
                 <hr>
@@ -108,17 +106,16 @@ require_once('partials/_head.php');
                 $res = $stmt->get_result();
                 while ($prod = $res->fetch_object()) {
                 ?>
-                <div class="form-row">
-                  <div class="col-md-6">
-                    <label>Product Price (₱)</label>
-                    <input type="text" readonly name="prod_price" value="₱ <?php echo $prod->prod_price; ?>"
-                      class="form-control">
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <label>Product Price ($)</label>
+                      <input type="text" readonly name="prod_price" value="$ <?php echo $prod->prod_price; ?>" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <label>Product Quantity</label>
+                      <input type="text" name="prod_qty" class="form-control" value="">
+                    </div>
                   </div>
-                  <div class="col-md-6">
-                    <label>Product Quantity</label>
-                    <input type="text" name="prod_qty" class="form-control" value="">
-                  </div>
-                </div>
                 <?php } ?>
                 <br>
                 <div class="form-row">

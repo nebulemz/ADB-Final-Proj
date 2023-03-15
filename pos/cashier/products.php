@@ -84,7 +84,7 @@ require_once('partials/_head.php');
                     </td>
                     <td><?php echo $prod->prod_code; ?></td>
                     <td><?php echo $prod->prod_name; ?></td>
-                    <td>₱ <?php echo $prod->prod_price; ?></td>
+                    <td>$ <?php echo $prod->prod_price; ?></td>
                     <td>
                       <a href="update_product.php?update=<?php echo $prod->prod_id; ?>">
                         <button class="btn btn-sm btn-primary">
